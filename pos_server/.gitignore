@@ -1,0 +1,67 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+
+# Django
+*.log
+*.pot
+*.py[co]
+db.sqlite3
+db.sqlite3-journal
+
+# Environment Variables
+.env
+*.env
+
+# Media and Static Files
+/media/
+/staticfiles/
+
+# Virtual Environments
+env/
+venv/
+ENV/
+.venv/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Docker
+*.docker
+*.log
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Celery beat scheduler
+celerybeat-schedule
+
+# Coverage
+htmlcov/
+.coverage
+*.cover
+*.py,cover
+.hypothesis/
+.tox/
