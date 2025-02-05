@@ -30,7 +30,6 @@ class CreateOrderAPI(APIView):
         # Retrieve customer and create order
         customer = get_object_or_404(Customer, id=customer_id)
         order = Order.objects.create(customer=customer, created_by=request.user, total_amount=0)
-
         total_amount = 0
         for item in items:
             product = get_object_or_404(Product, id=item['product_id'])
@@ -49,7 +48,7 @@ class CreateOrderAPI(APIView):
         return Response({"order_id": order.id, "total_amount": total_amount}, status=status.HTTP_201_CREATED)
 class SalesReportAPI(APIView):
     def get(self, request):
-        period = request.GET.get('period', 'daily')  # Accept 'daily', 'weekly', 'monthly'
+        period = request.GET.get('period', 'daily')  
 
         if period == 'daily':
             orders = Order.objects.filter(created_at__date=datetime.date.today())
