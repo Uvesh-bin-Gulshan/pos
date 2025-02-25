@@ -22,11 +22,12 @@ db.sqlite3-journal
 /staticfiles/
 
 # Virtual Environments
+penv/
 .env/
 venv/
 ENV/
 .venv/
-
+penv
 # IDEs and Editors
 .vscode/
 .idea/
