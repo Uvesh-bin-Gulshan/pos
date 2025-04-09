@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pos.apps.PosAppConfig',
-     'rest_framework',
+    'users.apps.UsersAppConfig',
+    'store.apps.StoreAppConfig',
+    'products.apps.ProductsAppConfig',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +89,7 @@ WSGI_APPLICATION = 'pos_server.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'pos_db',
+       'NAME': 'pos',
        'USER': 'postgres',
        'PASSWORD': '123456',
        'HOST': 'localhost',

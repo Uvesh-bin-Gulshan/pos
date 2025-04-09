@@ -11,12 +11,30 @@ from barcode.writer import ImageWriter
 from io import BytesIO
 from django.core.files import File
 
-# ✅ Product Model  //inventory
+#POS-002
+# Category Model
+class Category(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    parent = models.ForeignKey("self", on_delete=models.SET_NULL, null=True, blank=True, related_name="subcategories")
+
+    def __str__(self):
+        return self.name
+#POS-002
+# Unit Model
+class Unit(models.Model):
+    name = models.CharField(max_length=50, unique=True)  # e.g., 'kg', 'cm', 'piece'
+
+    def __str__(self):
+        return self.name
+#POS-002
+# Product Model (Base)
 class Product(models.Model):
     name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     sku = models.CharField(max_length=12, unique=True)  # SKU should be 12 digits for EAN-13 barcode
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)  # Default stock to 0
+    unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True)  # Dynamic Unit
     barcode = models.ImageField(upload_to='barcodes/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -32,6 +50,18 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+#POS-002
+# Product Variant Model (Color, Size, etc.)
+class ProductVariant(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="variants")
+    attribute = models.CharField(max_length=50)  # e.g., "Color", "Size"
+    value = models.CharField(max_length=50)  # e.g., "Red", "XL"
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    stock = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.attribute}: {self.value}"
+
         
 # ✅ Supplier Model //purchase
 class Supplier(models.Model):
