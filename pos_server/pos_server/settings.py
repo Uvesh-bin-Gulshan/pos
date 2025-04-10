@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'pos.apps.PosAppConfig',
     'users.apps.UsersAppConfig',
     'store.apps.StoreAppConfig',
-    'products.apps.ProductsAppConfig',
-
+    'products.apps.ProductsConfig',
+    'sales.apps.SalesConfig',
+    'customers.apps.CustomersConfig',
+    'inventory.apps.InventoryConfig',
+    'reporting.apps.ReportingConfig',
     'rest_framework',
 ]
 
