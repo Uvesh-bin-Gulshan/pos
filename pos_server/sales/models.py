@@ -25,7 +25,7 @@ class Order(models.Model):
         ('other', 'Other'),
     )
     order_number=models.CharField(max_length=20,unique=True)
-    customer=models.ForeignKey('customer.Customer',on_delete=models.SET_NULL,null=True,blank=True)
+    customer=models.ForeignKey('customers.Customer',on_delete=models.SET_NULL,null=True,blank=True)
     guest_customer_phone = models.CharField(max_length=20, blank=True)
     is_guest_converted = models.BooleanField(default=False)  # Track if guest was later registered 
     user = models.ForeignKey('users.User', on_delete=models.SET_NULL, null=True) 
