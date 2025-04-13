@@ -23,4 +23,6 @@ urlpatterns = [
     path('auth/', include('users.urls')),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('admin/', admin.site.urls),
+    path('inventory/', include('products.urls')),
+    path('business/', include('store.urls')),
 ]
