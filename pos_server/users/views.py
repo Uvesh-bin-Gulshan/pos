@@ -4,9 +4,7 @@ from rest_framework.decorators import action
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import Group
 from .models import User
-from .serializers import (UserSerializer, LoginSerializer, 
-                         ChangePasswordSerializer, UserRegistrationSerializer)
-
+from .serializers import UserSerializer, GroupSerializer, LoginSerializer, ChangePasswordSerializer, UserRegistrationSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
