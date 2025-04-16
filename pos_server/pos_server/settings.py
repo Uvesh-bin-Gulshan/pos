@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'sales.apps.SalesConfig',
     'customers.apps.CustomersConfig',
     'inventory.apps.InventoryConfig',
+    'zakat.apps.ZakatConfig',
     'reporting.apps.ReportingConfig',
     'rest_framework',
     'rest_framework_simplejwt',
