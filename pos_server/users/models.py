@@ -1,3 +1,4 @@
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -10,6 +11,7 @@ class User(AbstractUser):
     role=models.CharField(max_length=20,choices=ROLES,default='cashier')
     phone=models.CharField(max_length=20,blank=True)
     is_active=models.BooleanField(default=True)
+
 
 
     def __str__(self):
